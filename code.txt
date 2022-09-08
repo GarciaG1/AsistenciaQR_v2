@@ -1,0 +1,68 @@
+function doGet(e) {
+
+  var nombre=e.values[1];
+  var correous=e.values[5];
+  var id=e.values[6];
+
+
+  emailOnFormSubmit(id, nombre, correous);
+
+//   // Obtenemos el correo de la cuenta ejecutando el registro
+//   const correo = Session.getActiveUser().getEmail();
+
+//   // Registramos la asistencia usando el correo y los parámetros que vienen en la URL
+//   registrarAsistencia(correo, e.parameter.id, e.parameter.nombre);
+
+//   //Damos retroalimentación sobre lo que sucedió:
+  
+//   var fecha = new Date();
+//   var id = e.parameter.id;
+//   var nombre = e.parameter.nombre;
+//   var organizacion = e.parameter.organizacion;
+//   var puesto = e.parameter.puesto;
+
+//   var template = HtmlService.createTemplateFromFile('index'); 
+//   template.fecha = fecha;
+//   template.id = id;
+//   template.nombre = nombre;
+//   template.organizacion = organizacion;
+//   template.puesto = puesto;
+
+//   var output = template.evaluate();
+//   return output;
+}
+
+// function include(fileName){
+//   return HtmlService.createHtmlOutputFromFile(fileName).getContent();
+// }
+
+
+// function registrarAsistencia(correo, id, nombre) {
+//   // Debes cambiar este identificador por el de tu documento de hoja de cálculo
+
+//   const sheet = SpreadsheetApp.openById("1J8jtzeS7tJ3Gpe1Yvq6_ktlLwvoF2nKc57UfcSHIMK4");
+//   const asistencia = sheet.getSheetByName("ASISTENCIA");
+//   const lastRow = asistencia.getLastRow() + 1;
+//   asistencia.getRange(lastRow, 1).setValue(correo);
+//   asistencia.getRange(lastRow, 2).setValue(id);
+//   asistencia.getRange(lastRow, 3).setValue(nombre);
+//   asistencia.getRange(lastRow, 4).setValue(new Date());
+// }
+
+
+function emailOnFormSubmit(id,nombre,correous) {
+  
+	var  subject  =  "Confirmación de registro ";
+
+	var  emailBody  =  "Correo electrónico del usuario "  +  nombre  + 
+					"\nCurp "  +  id  + 
+					"\nCon correo electrónico "  +  correous  +
+					"\n\n¡Gracias por registrarse!" ; 
+
+	var  htmlBody  = "<h1 style='text-align: center;'>Confirmaci&oacute;n de registro</h1><h2 style='text-align: center;'>Hemos registrado tus datos "+nombre+"</h2><h3 style='text-align: center;'>Este es tu c&oacute;digo QR para el registro de tu asistencia</h3><p style='text-align: center;'><strong>Tu Curp es la siguiente: "+id+"</strong></p><p style='text-align: center;'><strong>Organizaci&oacute;n a la que perteneces: {{organizacion}}</strong></p><p style='text-align: center;'><strong>Puesto desempe&ntilde;ado: {{puesto}}</strong></p><p><img style='display: block; margin-left: auto; margin-right: auto;' src='https://chart.googleapis.com/chart?chs=250x250&amp;cht=qr&amp;chl=https://script.google.com/macros/s/AKfycbze9mcxk5slbCHuCoLJxktiDJB8PSk_gpOif8Xvj5568HLgKsslQeeZulPBgvMTPI5E/exec?id="+id+"&nombre="+nombre+"' alt='QR' width='250' height='250' /></p>";
+	
+	var  advancedOpts  =  {  nombre : "Formularios - AGENCIA DIGITAL" ,  htmlBody : htmlBody  } ;
+
+	MailApp.sendEmail(correous, subject, emailBody, advancedOpts);
+
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <?!= include("estilos")?>
+  </head>
+  <body class="text-center text-justify">
+    <form class="form-signin">
+      <div class="text-center mb-4">
+        <img class="mb-4" src="http://drive.google.com/uc?export=view&id=1vtWUSAD6ptuZ5cEV1VgfUsWnoZIdotdO" alt="" height="150">
+        <br>
+        <h1 class="color-red text-100 mb-3 font-montserrat-medium">ASISTENCIA CONFIRMADA</h1>
+        <br>
+        <p class="text-30 font-montserrat-medium">Tu asistencia a sido confirmada.</p>
+        <br>
+        <p class="text-20 font-montserrat-medium">Estimad@ <?= nombre ?> </p>
+        <br>
+        <p class="text-20 font-montserrat-medium">Tu CURP es: <?= id ?> </p>
+        <p class="text-20 font-montserrat-medium">Organización a la que perteneces: <?= organizacion ?> </p>
+        <p class="text-20 font-montserrat-medium">Cargo en el que estas: <?= puesto ?> </p>
+      </div>
+      <p class="mt-5 mb-3 text-muted text-center text-20 font-montserrat-medium">Fecha <?= fecha ?></p>
+      <br>
+      <br>
+      <img src="https://media.istockphoto.com/vectors/green-check-mark-isolated-on-white-background-approved-sign-agree-vector-id1148287607?k=20&m=1148287607&s=170667a&w=0&h=pgsmGyTco5a917UVPaf-Xo0s4NiR-gwSVn8qzOpzN0k=" height="650">
+    </form>
+
+  </body>
+</html>
